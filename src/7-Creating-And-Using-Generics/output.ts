@@ -97,7 +97,7 @@ async function runTheLearningSamples() {
   console.log(whatIsIt_any(11));
   console.log(whatIsIt_any('john'));
 
-  function whatIsIt_typed<T>(arg: T): T {
+  function whatIsIt_typed<T>(arg: T): T { // function whatIsIt_typed<Type>(arg: Type): Type {}
     return arg;
   }
 
@@ -174,7 +174,7 @@ async function runTheLearningSamples() {
   // ReadOnly<T> constraint
   const model: FoodModel = new FoodModel();
   await model.getItems();
-  const foodItem: Readonly<FoodProduct | undefined> = model.getItemById(10);
+  const foodItem: Readonly<FoodProduct | undefined> = model.getItemById(10); // read only, cannot edit
   if (foodItem) {
     // foodItem.name = 'some name';
     // foodItem.icon = 'some icon';
@@ -184,4 +184,5 @@ async function runTheLearningSamples() {
   const pear = { name: 'pear' };
   // const pearFood: FoodProduct = pear;
   const pearFood: Partial<FoodProduct> = pear;
+  console.log(pear);
 }

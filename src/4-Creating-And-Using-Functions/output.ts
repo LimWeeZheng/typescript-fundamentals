@@ -122,7 +122,24 @@ function runTheLearningSamples() {
 
   // CREATE type ProductType
 
+  /*
+  const getProductById = function (id: number): ProductType | undefined {
+    return sampleProducts.find((p) => (id = p.id));
+  }
+
+  const getProductById = (id: number): ProductType | undefined => 
+    return sampleProducts.find((p) => (id = p.id));
+  */
   function getProductById(id: number): ProductType | undefined {
+    /* 
+      return sampleProducts.find((p) => {
+        return id === p.id;
+      });
+
+      return sampleProducts.find(function (p) {
+        return id === p.id;
+      });
+    */
     return sampleProducts.find((p) => (id = p.id));
   }
 
@@ -132,7 +149,13 @@ function runTheLearningSamples() {
   // Return void
 
   function displayProducts(products: ProductType[]): void {
-    const productNames = products.map((p) => {
+    /*
+    const productNames = products.map(function (p) {
+      const name = p.name.toLowerCase();
+      return name;
+    });
+    */
+    const productNames = products.map((p: ProductType) => {
       const name = p.name.toLowerCase();
       return name;
     });
@@ -200,7 +223,7 @@ function runTheLearningSamples() {
   function buildAddress(
     street: string,
     city: string,
-    ...restOfAddress: string[]
+    ...restOfAddress: string[] //rest parameter
   ) {
     const address = `${street}, ${city} ${restOfAddress.join(' ')}`;
     return address;
@@ -209,9 +232,9 @@ function runTheLearningSamples() {
   const someAddress = buildAddress(
     '1 lois lane',
     'smallville',
-    'apt 101', // rest
-    'area 51', // rest
-    'mystery country', // rest
+    'apt 101', // rest arg[0]
+    'area 51', // rest arg[1]
+    'mystery country', // rest arg[2]
   );
 
   console.log(`${prefix} Rest parameters`);
